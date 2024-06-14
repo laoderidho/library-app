@@ -4,6 +4,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { AuthModule } from './auth/auth.module';
 import { BookModule } from './book/book.module';
 import { BorrowingModule } from './borrowing/borrowing.module';
+import { MemberModule } from './member/member.module';
 
 @Module({
   imports: [
@@ -11,6 +12,7 @@ import { BorrowingModule } from './borrowing/borrowing.module';
     AuthModule,
     BookModule,
     BorrowingModule,
+    MemberModule,
   ],
   controllers: [],
   providers: [],

@@ -7,13 +7,13 @@ import { Repository } from "typeorm";
 @Injectable()
 export class BookService{
     constructor(
-        @InjectRepository(Book) private bookRepository: Repository<Book >
+        @InjectRepository(Book) 
+        private bookRepository: Repository<Book >,
     ){}
 
     async addBook(createBook: CreateBookdto){
         try {
             await this.bookRepository.save(createBook)
-
             return {
                 message: 'data Berhasil Di Simpan'
             }
@@ -29,6 +29,12 @@ export class BookService{
                 .where('book.stok > 0')
                 .take(100)
                 .getMany()
+            
+            if(data.length === 0){
+                return {
+                    message: 'buku tidak ada'
+                }
+            }
             return data
         } catch (error) {
             return error

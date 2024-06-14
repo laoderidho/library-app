@@ -1,4 +1,5 @@
-import { Entity, Column, Unique, PrimaryGeneratedColumn } from "typeorm";
+import { Entity, Column, PrimaryGeneratedColumn, OneToMany } from "typeorm";
+import { Borrowing } from "src/borrowing/infrastructure/entities/borrowing.entity";
 
 
 @Entity('books')
@@ -14,4 +15,7 @@ export class Book{
 
     @Column()
     stok: number
+
+    @OneToMany(() => Borrowing, borrowing => borrowing.book)
+    borrowings: Borrowing[];
 }
